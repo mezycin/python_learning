@@ -1,35 +1,47 @@
 value = []
-result1 = []
-result2 = []
+summ1 = []
+summ2 = []
 
-for num in range(1001):                          #задаю число от 1 до 1000
-    if not num % 2 == 0:                        #вычисление нечетного, если не делится на 2 без остатка = число нечетное
-        value.append(num ** 3)                  #добавляю число в список, сразу переводя его в куб
-for number in range(len(value)):                #цикл для вывода отдельного числа из списка
-        digit_b = []                            #список для остатков от деления
-        digit_a = value[number]                 #переменная для результата деления нацело
-        while digit_a > 0:                      #сколько раз сработает цикл
-            digit_b.append(digit_a % 10)        #добавление в список остатка от деления, т.е. последнюю цифру числа
-            digit_a = digit_a // 10             #оставляет в переменной число, которое разделилось без остатка и переносит на следующую итерацию, т.е. все, кроме последней цифры
+for i in range(1, 1001):
+    if i % 2 != 0:
+        value.append(i ** 3)
 
-        summ = 0                                #задаю переменную для суммы чисел
-        for num in range(len(digit_b)):         #цикл для указания чисел из списка б
-            summ = summ + int(digit_b[num])     #вычисление суммы чисел
-        if summ % 7 == 0:                       #условия делится ли нацело на 7
-            result1.append(summ)                #если делится , то добавляем в список
+#print(value)
 
-print(result1)                                   #здесь заканчивается выполнения задания под буквой а
+for number in range(len(value)):  # цикл для вывода отдельного числа из списка
+    digit_b = []  # список для остатков от деления
+    digit_a = value[number]  # переменная для результата деления нацело
+    while digit_a > 0:  # сколько раз сработает цикл
+        digit_b.append(digit_a % 10)  # добавление в список остатка от деления, т.е. последнюю цифру числа
+        digit_a = digit_a // 10  # оставляет в переменной число, которое разделилось без остатка и переносит на следующую итерацию, т.е. все, кроме последней цифры
 
-for num in range(len(result1)):                 #цикл для списка, который получили в задании а
-        digit_b = []                            #список для остатков от деления
-        digit_a = result1[num] + 17             #переменная для результата + 17 и последующего деления нацело
-        while digit_a > 0:                      #сколько раз сработает цикл
-            digit_b.append(digit_a % 10)        #добавление в список остатка от деления, т.е. последнюю цифру числа
-            digit_a = digit_a // 10             #оставляет в переменной число, которое разделилось без остатка и переносит на следующую итерацию, т.е. все, кроме последней цифры
-        summaries = 0                           #задаю переменную для суммы чисел
-        for num in range(len(digit_b)):         #цикл для указания чисел из списка б
-            summaries = summaries + int(digit_b[num])       #вычисление суммы чисел
-        if summaries % 7 == 0:                              #условия делится ли нацело на 7
-            result2.append(summaries)                       #если делится , то добавляем в список
+    summ = 0  # задаю переменную для суммы чисел
+    for num in range(len(digit_b)):  # цикл для указания чисел из списка б
+        summ = summ + int(digit_b[num])  # вычисление суммы чисел
+    if summ % 7 == 0:  # условия делится ли нацело на 7
+        summ1.append(value[number])  # если делится , то добавляем в список
 
-print(result2)
+#print(summ1)
+summ = 0
+for i in range(len(summ1)):
+    summ = summ1[i] + summ
+print(summ)
+
+
+for i in range(len(summ1)):
+    digit_b = []
+    digit_a = summ1[i] + 17
+    while digit_a:
+        digit_b.append(digit_a % 10)
+        digit_a = digit_a // 10
+    for num in range(len(digit_b)):
+        summ = summ + int(digit_b[num])
+    if summ % 7 == 0:
+        summ2.append(summ1[i])
+
+#print(summ2)
+
+summaries2 = 0
+for i in range(len(summ2)):
+    summaries2 = summ2[i] + summaries2
+print(summaries2)
